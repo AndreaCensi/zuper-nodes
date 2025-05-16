@@ -3,39 +3,44 @@ from io import BufferedReader
 from typing import cast
 
 import cbor2 as cbor
-
 from zuper_commons.text import indent
 from zuper_commons.types import ZException
-from zuper_ipce import IEDO, IESO, ipce_from_object, object_from_ipce, read_next_cbor
-from zuper_nodes import (
-    check_compatible_protocol,
-    ExternalNodeDidNotUnderstand,
-    ExternalProtocolViolation,
-    ExternalTimeout,
-    InteractionProtocol,
-    RemoteNodeAborted,
-    TimingInfo,
-)
-from . import logger, logger_interaction
-from .constants import (
-    CAPABILITY_PROTOCOL_REFLECTION,
-    CTRL_ABORTED,
-    CTRL_CAPABILITIES,
-    CTRL_NOT_UNDERSTOOD,
-    CTRL_OVER,
-    CTRL_UNDERSTOOD,
-    CUR_PROTOCOL,
-    FIELD_COMPAT,
-    FIELD_CONTROL,
-    FIELD_DATA,
-    FIELD_TIMING,
-    FIELD_TOPIC,
-    TAG_Z2,
-    TOPIC_ABORTED,
-)
-from .meta_protocol import basic_protocol, ProtocolDescription
+from zuper_ipce import IEDO
+from zuper_ipce import IESO
+from zuper_ipce import ipce_from_object
+from zuper_ipce import object_from_ipce
+from zuper_ipce import read_next_cbor
+
+from zuper_nodes import ExternalNodeDidNotUnderstand
+from zuper_nodes import ExternalProtocolViolation
+from zuper_nodes import ExternalTimeout
+from zuper_nodes import InteractionProtocol
+from zuper_nodes import RemoteNodeAborted
+from zuper_nodes import TimingInfo
+from zuper_nodes import check_compatible_protocol
+
+from . import logger
+from . import logger_interaction
+from .constants import CAPABILITY_PROTOCOL_REFLECTION
+from .constants import CTRL_ABORTED
+from .constants import CTRL_CAPABILITIES
+from .constants import CTRL_NOT_UNDERSTOOD
+from .constants import CTRL_OVER
+from .constants import CTRL_UNDERSTOOD
+from .constants import CUR_PROTOCOL
+from .constants import FIELD_COMPAT
+from .constants import FIELD_CONTROL
+from .constants import FIELD_DATA
+from .constants import FIELD_TIMING
+from .constants import FIELD_TOPIC
+from .constants import TAG_Z2
+from .constants import TOPIC_ABORTED
+from .meta_protocol import ProtocolDescription
+from .meta_protocol import basic_protocol
 from .streams import wait_for_creation
-from .struct import interpret_control_message, MsgReceived, WireMessage
+from .struct import MsgReceived
+from .struct import WireMessage
+from .struct import interpret_control_message
 
 __all__ = [
     "ComponentInterface",
@@ -163,8 +168,7 @@ class ComponentInterface:
                 _ = object_from_ipce(ipce, suggest_type, iedo=iedo)
             except BaseException as e:
                 msg = (
-                    f'While attempting to write on topic "{topic}", cannot '
-                    f"interpret the value as {suggest_type}.\nValue: {data}"
+                    f'While attempting to write on topic "{topic}", cannot interpret the value as {suggest_type}.\nValue: {data}'
                 )
                 raise ZException(msg, data=data, ipce=ipce, suggest_type=suggest_type) from e  # XXX
 
@@ -192,9 +196,7 @@ class ComponentInterface:
             self.fpin.write(j)
             self.fpin.flush()
         except BrokenPipeError as e:
-            msg = (
-                f'While attempting to write to node "{self.nickname}", ' f"I reckon that the pipe is closed and the node exited."
-            )
+            msg = f'While attempting to write to node "{self.nickname}", I reckon that the pipe is closed and the node exited.'
             try:
                 received = self.read_one(expect_topic=TOPIC_ABORTED)
                 if received.topic == TOPIC_ABORTED:

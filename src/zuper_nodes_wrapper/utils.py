@@ -1,6 +1,7 @@
 import inspect
 
 from zuper_commons.types import ZTypeError
+
 from . import logger
 
 __all__ = [

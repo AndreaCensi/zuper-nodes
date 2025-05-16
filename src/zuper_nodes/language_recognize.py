@@ -1,19 +1,18 @@
 from dataclasses import dataclass
 
 from zuper_commons.text import indent
-from .language import (
-    Either,
-    ExpectInputReceived,
-    ExpectOutputProduced,
-    InputReceived,
-    InSequence,
-    Language,
-    OneOrMore,
-    OutputProduced,
-    ZeroOrMore,
-    ZeroOrOne,
-    ZEvent,
-)
+
+from .language import Either
+from .language import ExpectInputReceived
+from .language import ExpectOutputProduced
+from .language import InputReceived
+from .language import InSequence
+from .language import Language
+from .language import OneOrMore
+from .language import OutputProduced
+from .language import ZeroOrMore
+from .language import ZeroOrOne
+from .language import ZEvent
 
 __all__ = [
     "Always",

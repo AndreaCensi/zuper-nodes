@@ -1,5 +1,6 @@
 import sys
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 
 from zuper_nodes.structures import TimingInfo
 
@@ -13,7 +14,8 @@ def wrap_direct(node, protocol, args: list[str] | None = None):
     if args is None:
         args = sys.argv[1:]
 
-    from .wrapper import check_implementation, run_loop
+    from .wrapper import check_implementation
+    from .wrapper import run_loop
 
     # if PYTHON_36 or PYTHON_37:
     #     monkeypatch_findCaller()

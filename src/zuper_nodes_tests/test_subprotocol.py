@@ -1,8 +1,12 @@
 from dataclasses import dataclass
 
 from zuper_commons.test_utils import assert_raises
-from zuper_nodes import check_compatible_protocol, IncompatibleProtocol, InteractionProtocol
-from zuper_nodes.language import opposite, particularize_no_check
+
+from zuper_nodes import IncompatibleProtocol
+from zuper_nodes import InteractionProtocol
+from zuper_nodes import check_compatible_protocol
+from zuper_nodes.language import opposite
+from zuper_nodes.language import particularize_no_check
 
 
 @dataclass

@@ -5,10 +5,20 @@ from typing import Union
 
 from zuper_commons.text import indent
 from zuper_ipce import read_next_cbor
+
 from zuper_nodes.structures import ExternalTimeout
+
 from . import logger
-from .constants import CUR_PROTOCOL, FIELD_COMPAT, FIELD_CONTROL, FIELD_DATA, FIELD_TIMING, FIELD_TOPIC
-from .struct import ControlMessage, interpret_control_message, RawTopicMessage, WireMessage
+from .constants import CUR_PROTOCOL
+from .constants import FIELD_COMPAT
+from .constants import FIELD_CONTROL
+from .constants import FIELD_DATA
+from .constants import FIELD_TIMING
+from .constants import FIELD_TOPIC
+from .struct import ControlMessage
+from .struct import RawTopicMessage
+from .struct import WireMessage
+from .struct import interpret_control_message
 
 M = Union[RawTopicMessage, ControlMessage]
 

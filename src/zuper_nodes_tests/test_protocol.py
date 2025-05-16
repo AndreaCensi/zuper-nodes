@@ -2,11 +2,20 @@ import os
 from collections.abc import Sequence
 
 from networkx.drawing.nx_pydot import write_dot
-
 from zuper_commons.fs import make_sure_dir_exists
-from zuper_nodes import ChannelName, InputReceived, Language, logger, OutputProduced, ZEvent
-from zuper_nodes.language_parse import language_to_str, parse_language
-from zuper_nodes.language_recognize import Enough, LanguageChecker, NeedMore, Unexpected
+
+from zuper_nodes import ChannelName
+from zuper_nodes import InputReceived
+from zuper_nodes import Language
+from zuper_nodes import OutputProduced
+from zuper_nodes import ZEvent
+from zuper_nodes import logger
+from zuper_nodes.language_parse import language_to_str
+from zuper_nodes.language_parse import parse_language
+from zuper_nodes.language_recognize import Enough
+from zuper_nodes.language_recognize import LanguageChecker
+from zuper_nodes.language_recognize import NeedMore
+from zuper_nodes.language_recognize import Unexpected
 from zuper_nodes_wrapper.meta_protocol import basic_protocol
 
 

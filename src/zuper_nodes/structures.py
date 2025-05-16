@@ -1,6 +1,7 @@
 import socket
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from dataclasses import field
 
 import numpy as np
 

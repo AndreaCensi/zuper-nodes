@@ -1,7 +1,9 @@
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 from collections.abc import Iterator
 from dataclasses import dataclass
-from typing import NewType, TYPE_CHECKING
+from typing import TYPE_CHECKING
+from typing import NewType
 
 __all__ = [
     "ChannelName",
@@ -149,7 +151,8 @@ class InteractionProtocol:
     # interaction: Language = None
 
     def __post_init__(self) -> None:
-        from .language_parse import parse_language, language_to_str
+        from .language_parse import language_to_str
+        from .language_parse import parse_language
 
         self.interaction = parse_language(self.language)
 
@@ -169,7 +172,8 @@ class InteractionProtocol:
 
 
 def opposite(ip: InteractionProtocol) -> InteractionProtocol:
-    from .language_parse import language_to_str, parse_language
+    from .language_parse import language_to_str
+    from .language_parse import parse_language
 
     outputs = ip.inputs  # switch
     inputs = ip.outputs  # switch

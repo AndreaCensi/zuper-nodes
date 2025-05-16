@@ -3,22 +3,23 @@ import dataclasses
 import subprocess
 import sys
 from dataclasses import dataclass
-from io import BufferedReader, BytesIO
+from io import BufferedReader
+from io import BytesIO
 from typing import cast
 
 import cbor2
 import yaml
-
 from zuper_commons.text import indent
-from zuper_ipce import object_from_ipce, read_cbor_or_json_objects
+from zuper_ipce import object_from_ipce
+from zuper_ipce import read_cbor_or_json_objects
+
 from zuper_nodes import InteractionProtocol
+
 from . import logger
-from .meta_protocol import (
-    BuildDescription,
-    ConfigDescription,
-    NodeDescription,
-    ProtocolDescription,
-)
+from .meta_protocol import BuildDescription
+from .meta_protocol import ConfigDescription
+from .meta_protocol import NodeDescription
+from .meta_protocol import ProtocolDescription
 
 
 def identify_main():

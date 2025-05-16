@@ -4,8 +4,11 @@ import time
 from io import BufferedReader
 
 from zuper_commons.fs import make_sure_dir_exists
+
 from zuper_nodes import NodeEnvironmentError
-from . import logger, logger_interaction
+
+from . import logger
+from . import logger_interaction
 
 
 def wait_for_creation(fn: str, wait: float = 3.0):

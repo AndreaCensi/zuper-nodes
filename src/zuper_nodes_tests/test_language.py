@@ -1,16 +1,15 @@
 from zuper_commons.test_utils import my_assert_equal
 from zuper_commons.types import check_isinstance
-from zuper_nodes import (
-    ChannelName,
-    Either,
-    ExpectInputReceived,
-    ExpectOutputProduced,
-    InSequence,
-    Language,
-    OneOrMore,
-    ZeroOrMore,
-    ZeroOrOne,
-)
+
+from zuper_nodes import ChannelName
+from zuper_nodes import Either
+from zuper_nodes import ExpectInputReceived
+from zuper_nodes import ExpectOutputProduced
+from zuper_nodes import InSequence
+from zuper_nodes import Language
+from zuper_nodes import OneOrMore
+from zuper_nodes import ZeroOrMore
+from zuper_nodes import ZeroOrOne
 from zuper_nodes.language_parse import Syntax
 
 

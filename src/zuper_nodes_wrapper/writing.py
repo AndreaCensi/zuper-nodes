@@ -1,6 +1,11 @@
 import cbor2
 
-from .constants import CUR_PROTOCOL, FIELD_COMPAT, FIELD_CONTROL, FIELD_DATA, FIELD_TIMING, FIELD_TOPIC
+from .constants import CUR_PROTOCOL
+from .constants import FIELD_COMPAT
+from .constants import FIELD_CONTROL
+from .constants import FIELD_DATA
+from .constants import FIELD_TIMING
+from .constants import FIELD_TOPIC
 
 __all__ = [
     "Sink",
