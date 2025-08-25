@@ -8,13 +8,13 @@ workflows:
   version: 2
   test:
     jobs:
-    - test-312-src:
+    - test-313-src:
         context: <<pipeline.parameters.context_name>>
         filters:
           tags:
             ignore: /.*/
 jobs:
-  test-312-src:
+  test-313-src:
     environment:
       COLUMNS: '160'
       # default is /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -22,10 +22,12 @@ jobs:
         /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       CONTEXT_NAME: << pipeline.parameters.context_name >>
       DEPS_INSTALL_TIMEOUT: 10m
-      COVER_PACKAGES: zuper_nodes,zuper_nodes_tests,zuper_nodes_wrapper,zuper_nodes_wrapper_tests
+      COVER_PACKAGES: 
+        zuper_nodes,zuper_nodes_tests,zuper_nodes_wrapper,zuper_nodes_wrapper_tests
       TEST_PACKAGES: zuper_nodes_tests zuper_nodes_wrapper_tests
     docker:
-    - image: docker.io/${DOCKER_TARGET_ORG}/${DOCKER_REPO_PREFIX}zuper-ci-3.12:${Z_DISTRO}
+    - image: 
+        docker.io/${DOCKER_TARGET_ORG}/${DOCKER_REPO_PREFIX}zuper-ci-3.13:${Z_DISTRO}
       # auth:
       #   username: $DOCKER_USERNAME
       #   password: $DOCKER_PASSWORD
@@ -228,4 +230,4 @@ jobs:
           timeout 1m ./codecov || true
     resource_class: small
 
-# sigil 5446561b6e84d8e590a2325a4c96cd7d
+# sigil fbe3bbf7d570d2e508849360f92cf643
